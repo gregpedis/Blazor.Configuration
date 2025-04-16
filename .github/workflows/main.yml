@@ -32,6 +32,13 @@ jobs:
           target: "/var/www"
           strip_components: 1
 
+      - name: SCP favicon.png
+        uses: ./.github/actions/scp-upload
+        with:
+          source: "ui/favicon.png"
+          target: "/var/www"
+          strip_components: 1
+
       - name: SCP homepage.html 
         uses: ./.github/actions/scp-upload
         with:
