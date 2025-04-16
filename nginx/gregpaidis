@@ -4,8 +4,8 @@ server {
 	server_name gregpaidis.com;
 
 	location / {
-		root /var/www/;
-		index homepage.html;
+		root /var/www/homepage;
+		index index.html;
 	}
 	
 	location /simple-regex { 

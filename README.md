@@ -5,9 +5,8 @@ Configuration files for deploying Blazor WASM in a VPS with NGINX.
 ## How-to
 
 - copy `.bashrc` 
-- copy `ui/gregpaidis.css`
-- copy `ui/favicon.png`
-- copy `ui/homepage.html`
+- copy `homepage/`
+- run `ln -s /var/www/homepage/app.css /var/www/app.css || echo "Symbolic link already exists. Skipping...`
 - copy `nginx/nginx.conf`
 - copy `nginx/gregpaidis`
 - run `ln -s /etc/nginx/sites-available/gregpaidis /etc/nginx/sites-enabled/ || echo "Symbolic link already exists. Skipping..."`
