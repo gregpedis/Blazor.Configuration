@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           source: "ui/gregpaidis.css"
-          target: "/var/www"
+          target: "/var/www/gregpaidis.css"
 
       - name: SCP homepage.html
         uses: appleboy/scp-action@v0.1.7
@@ -30,4 +30,4 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           source: "ui/homepage.html"
-          target: "/var/www"
+          target: "/var/www/homepage.html"
