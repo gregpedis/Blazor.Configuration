@@ -23,6 +23,10 @@ h6:focus {
     outline: none;
 }
 
+hr {
+    border-color: greenyellow;
+}
+
 .content {
     padding-top: 1.1rem;
 }
