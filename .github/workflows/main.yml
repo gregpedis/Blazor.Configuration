@@ -14,11 +14,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: SCP stylesheet
+      - name: SCP gregpaidis.css
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           source: "gregpaidis.css"
+          target: "/var/www/"
+
+      - name: SCP homepage.html
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "homepage.html"
           target: "/var/www/"

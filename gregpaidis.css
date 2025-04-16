@@ -37,13 +37,13 @@ button,
 button:hover,
 .btn:hover,
 .btn-primary:hover {
-    background-color: #2e2e2e;
+    background-color: greenyellow;
 }
 
 button:active,
 .btn:active,
 .btn-primary:active {
-    background-color: greenyellow;
+    background-color: #2e2e2e;
 }
 
 code {
