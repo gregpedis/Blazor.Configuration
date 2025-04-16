@@ -1,0 +1,49 @@
+# copy this over /etc/nginx/sites-available/gregpaidis
+
+server {
+	server_name gregpaidis.com;
+
+	location / {
+		root /var/www/;
+		index homepage.html;
+	}
+	
+	location /simple-regex { 
+		alias /var/www/simple-regex/wwwroot/;
+		index index.html;
+		try_files $uri $uri/ /index.html;
+	}
+
+	location /github-analytics { 
+		alias /var/www/github-analytics/wwwroot/;
+		index index.html;
+		try_files $uri $uri/ /index.html;
+	}
+
+	location /wordle { 
+		alias /var/www/wordle/wwwroot/;
+		index index.html;
+		try_files $uri $uri/ /index.html;
+	}
+
+	location /dnd-10k { 
+		alias /var/www/dnd-10k/wwwroot/;
+		index index.html;
+		try_files $uri $uri/ /index.html;
+	}
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/gregpaidis.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/gregpaidis.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+server {
+    if ($host = gregpaidis.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen 80;
+    server_name gregpaidis.com;
+    return 404; # managed by Certbot
+}
