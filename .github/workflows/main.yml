@@ -11,31 +11,36 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+
     steps:
       - uses: actions/checkout@v2
 
       - name: SCP .bashrc
-        uses: ./.github/actions/scp-upload
+        uses: .github/actions/scp-upload
         with:
           source: ".bashrc"
           target: "/root"
 
       - name: SCP gregpaidis.css
-        uses: ./.github/actions/scp-upload
+        uses: .github/actions/scp-upload
         with:
           source: "ui/gregpaidis.css"
           target: "/var/www"
           strip_components: 1
 
       - name: SCP homepage.html 
-        uses: ./.github/actions/scp-upload
+        uses: .github/actions/scp-upload
         with:
           source: "ui/homepage.html"
           target: "/var/www"
           strip_components: 1
 
       - name: SCP nginx.conf
-        uses: ./.github/actions/scp-upload
+        uses: .github/actions/scp-upload
         with:
           source: "nginx/nginx.conf"
           target: "/etc/nginx"
