@@ -1,13 +1,15 @@
 # Blazor.Configuration
 
-Configuration files for deployment Blazor WASM in a VPS with NGINX.
+Configuration files for deploying Blazor WASM in a VPS with NGINX.
 
 ## How-to
 
+- copy `ui/homepage.html` (automated)
+- copy `ui/gregpaidis.css` (automated)
 - copy `.bashrc`
-- copy `homepage.html`
-- copy `nginx.conf`
-- copy `gregpaidis`
+
+- copy `nginx/nginx.conf`
+- copy `nginx/gregpaidis`
 - run `ln -s /etc/nginx/sites-available/gregpaidis /etc/nginx/sites-enabled/`
 - run `nginx -t`
 - run `systemctl restart nginx`
