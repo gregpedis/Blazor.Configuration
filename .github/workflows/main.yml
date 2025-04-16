@@ -52,3 +52,22 @@ jobs:
           source: "nginx/gregpaidis"
           target: "/etc/nginx/sites-available"
           strip_components: 1
+
+      - name: Symbolic link sites-available -> sites-enabled
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ env.VPS_HOST }}
+          username: ${{ env.VPS_USER }}
+          key: ${{ env.VPS_SSH_KEY }}
+          script: |
+            ln -s /etc/nginx/sites-available/gregpaidis /etc/nginx/sites-enabled/ \
+            || echo "Symbolic link already exists. Skipping..."
+
+      - name: Restart NGINX
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ env.VPS_HOST }}
+          username: ${{ env.VPS_USER }}
+          key: ${{ env.VPS_SSH_KEY }}
+          script: |
+            nginx -t && systemctl restart nginx
