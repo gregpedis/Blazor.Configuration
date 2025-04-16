@@ -20,28 +20,35 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: SCP .bashrc
-        uses: .github/actions/scp-upload
+        uses: ./.github/actions/scp-upload
         with:
           source: ".bashrc"
           target: "/root"
 
       - name: SCP gregpaidis.css
-        uses: .github/actions/scp-upload
+        uses: ./.github/actions/scp-upload
         with:
           source: "ui/gregpaidis.css"
           target: "/var/www"
           strip_components: 1
 
       - name: SCP homepage.html 
-        uses: .github/actions/scp-upload
+        uses: ./.github/actions/scp-upload
         with:
           source: "ui/homepage.html"
           target: "/var/www"
           strip_components: 1
 
       - name: SCP nginx.conf
-        uses: .github/actions/scp-upload
+        uses: ./.github/actions/scp-upload
         with:
           source: "nginx/nginx.conf"
           target: "/etc/nginx"
+          strip_components: 1
+
+      - name: SCP gregpaidis
+        uses: ./.github/actions/scp-upload
+        with:
+          source: "nginx/gregpaidis"
+          target: "/etc/nginx/sites-available"
           strip_components: 1
