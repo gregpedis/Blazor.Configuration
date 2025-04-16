@@ -14,6 +14,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: SCP .bashrc
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: ".bashrc"
+          target: "/root"
+
       - name: SCP gregpaidis.css
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -34,11 +43,12 @@ jobs:
           target: "/var/www"
           strip_components: 1
 
-      - name: SCP .bashrc
+      - name: SCP nginx.conf
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          source: ".bashrc"
-          target: "/root"
+          source: "nginx/nginx.conf"
+          target: "/etc/nginx"
+          strip_components: 1
