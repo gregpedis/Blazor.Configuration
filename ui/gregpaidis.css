@@ -44,16 +44,16 @@ button:hover,
     background-color: greenyellow;
 }
 
-button:active,
-.btn:active,
-.btn-primary:active {
-    background-color: #2e2e2e;
-}
-
 button:focus,
 .btn:focus,
 .btn-primary:focus {
     background-color: greenyellow;
+}
+
+button:active:focus,
+.btn:active:focus,
+.btn-primary:active:focus {
+    background-color: #2e2e2e;
 }
 
 code {
