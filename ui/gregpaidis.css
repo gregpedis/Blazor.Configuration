@@ -50,6 +50,12 @@ button:active,
     background-color: #2e2e2e;
 }
 
+button:focus,
+.btn:focus,
+.btn-primary:focus {
+    background-color: #2e2e2e;
+}
+
 code {
     color: #c02d76;
 }

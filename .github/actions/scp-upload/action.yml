@@ -1,0 +1,25 @@
+name: "SCP Upload"
+description: "Upload a file to VPS via SCP"
+inputs:
+  source:
+    required: true
+    description: "Path to local file"
+  target:
+    required: true
+    description: "Target directory or file path on VPS"
+  strip_components:
+    required: false
+    description: "Strip directory components"
+    default: 0
+
+runs:
+  using: "composite"
+  steps:
+    - uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        source: ${{ inputs.source }}
+        target: ${{ inputs.target }}
+        strip_components: ${{ inputs.strip_components }}

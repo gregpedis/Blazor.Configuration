@@ -15,40 +15,28 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: SCP .bashrc
-        uses: appleboy/scp-action@v0.1.7
+        uses: ./.github/actions/scp-upload
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
           source: ".bashrc"
           target: "/root"
 
       - name: SCP gregpaidis.css
-        uses: appleboy/scp-action@v0.1.7
+        uses: ./.github/actions/scp-upload
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
           source: "ui/gregpaidis.css"
           target: "/var/www"
           strip_components: 1
 
-      - name: SCP homepage.html
-        uses: appleboy/scp-action@v0.1.7
+      - name: SCP homepage.html 
+        uses: ./.github/actions/scp-upload
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
           source: "ui/homepage.html"
           target: "/var/www"
           strip_components: 1
 
       - name: SCP nginx.conf
-        uses: appleboy/scp-action@v0.1.7
+        uses: ./.github/actions/scp-upload
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
           source: "nginx/nginx.conf"
           target: "/etc/nginx"
           strip_components: 1
