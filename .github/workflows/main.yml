@@ -31,16 +31,6 @@ jobs:
           source: "homepage/"
           target: "/var/www"
 
-      - name: Symbolic link homepage/app.css -> app.css
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ env.VPS_HOST }}
-          username: ${{ env.VPS_USER }}
-          key: ${{ env.VPS_SSH_KEY }}
-          script: |
-            ln -s /var/www/homepage/app.css /var/www/app.css/ \
-            || echo "Symbolic link already exists. Skipping..."
-
       - name: SCP nginx.conf
         uses: ./.github/actions/scp
         with:
