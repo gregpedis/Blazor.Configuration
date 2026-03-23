@@ -32,6 +32,12 @@ server {
 		try_files $uri $uri/ /index.html;
 	}
 
+	location /sprite-generator { 
+		alias /var/www/sprite-generator/wwwroot/;
+		index index.html;
+		try_files $uri $uri/ /index.html;
+	}
+
     listen 443 ssl; # managed by Certbot
     ssl_certificate /etc/letsencrypt/live/gregpaidis.com/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/gregpaidis.com/privkey.pem; # managed by Certbot
